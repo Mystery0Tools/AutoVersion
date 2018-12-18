@@ -3,10 +3,12 @@ buildscript {
 	repositories {
 		google()
 		jcenter()
+		maven("https://jitpack.io")
 	}
 	dependencies {
 		classpath("com.android.tools.build:gradle:3.3.0-rc02")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+		classpath("com.github.Mystery0Tools:AutoVersion:1.0.2")
 	}
 }
 

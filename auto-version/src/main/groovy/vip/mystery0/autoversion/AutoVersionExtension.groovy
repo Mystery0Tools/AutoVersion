@@ -24,65 +24,66 @@ class AutoVersionExtension {
 	int beta = 0
 	int alpha = 0
 	int build = -1
+	boolean isShowBuild = true
 	String branch = ""
 
-	public <T> void setMajor(T number) {
-		major = validate(number)
+	void setMajor(int major) {
+		this.major = major
 	}
 
-	public <T> void setPatch(T number) {
-		patch = validate(number)
+	void setMinor(int minor) {
+		this.minor = minor
 	}
 
-	public <T> void setBuild(T number) {
-		build = validate(number)
+	void setPatch(int patch) {
+		this.patch = patch
 	}
 
-	public void setBranch(String branch) {
+	void setBeta(int beta) {
+		this.beta = beta
+	}
+
+	void setAlpha(int alpha) {
+		this.alpha = alpha
+	}
+
+	void setBuild(int build) {
+		this.build = build
+	}
+
+	void setIsShowBuild(boolean isShowBuild) {
+		this.isShowBuild = isShowBuild
+	}
+
+	void setBranch(String branch) {
 		this.branch = branch
 	}
 
-	public def getBranch() {
+	def getBranch() {
 		if (branch == "")
 			branch = Utils.branchName
 		return branch
 	}
 
-	public def getBuild() {
+	def getBuild() {
 		if (build == -1)
 			build = Utils.commitCount
 		return build
 	}
 
-	public Integer getCode() {
-		if (build == -1)
-			build = Utils.commitCount
-		return build
+	Integer getCode() {
+		return getBuild()
 	}
 
-	public String getName() {
+	String getName() {
 		def versionName
 		if (beta != 0) {
-			versionName = "${major}.${minor}.${patch}-beta${beta}"
+			versionName = "${major}.${minor}.${patch}-beta${beta}${if (isShowBuild) "(${build})"}"
 		} else if (alpha != 0) {
-			versionName = "${major}.${minor}.${patch}-alpha${alpha}"
+			versionName = "${major}.${minor}.${patch}-alpha${alpha}${if (isShowBuild) "(${build})"}"
 		} else {
-			versionName = "${major}.${minor}.${patch}"
+			versionName = "${major}.${minor}.${patch}${if (isShowBuild) "(${build})"}"
 		}
 		return versionName
-	}
-
-	private static <T> int validate(T number) {
-		def intNumber
-		try {
-			intNumber = number.toInteger()
-		} catch (Exception e) {
-			e.printStackTrace()
-			return 0
-		}
-		if (intNumber < 0) {
-			return 0
-		}
-		return intNumber
 	}
 }
