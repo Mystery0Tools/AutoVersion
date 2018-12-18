@@ -1,13 +1,5 @@
 plugins {
 	id("com.android.application")
-	id("vip.mystery0.autoversion")
-}
-autoVersion {
-	setMajor(1)
-	minor = 2
-	setPatch(3)
-	beta = 4
-	alpha = 5
 }
 
 android {
@@ -15,8 +7,8 @@ android {
 	defaultConfig {
 		applicationId = "vip.mystery0.simple_autoversion"
 		minSdkVersion(14)
-		versionCode = autoVersion.code
-		versionName = autoVersion.name
+		versionCode = 1
+		versionName = "1.0"
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 	}
 
