@@ -78,11 +78,11 @@ class AutoVersionExtension {
 	String getName() {
 		def versionName
 		if (beta != 0) {
-			versionName = "${major}.${minor}.${patch}-beta${beta}${if (isShowBuild) "(${build})"}"
+			versionName = "${major}.${minor}.${patch}-beta${beta}${if (isShowBuild) "(${build})" else ""}"
 		} else if (alpha != 0) {
-			versionName = "${major}.${minor}.${patch}-alpha${alpha}${if (isShowBuild) "(${build})"}"
+			versionName = "${major}.${minor}.${patch}-alpha${alpha}${if (isShowBuild) "(${build})" else ""}"
 		} else {
-			versionName = "${major}.${minor}.${patch}${if (isShowBuild) "(${build})"}"
+			versionName = "${major}.${minor}.${patch}${if (isShowBuild) "(${build})" else ""}"
 		}
 		return versionName
 	}
