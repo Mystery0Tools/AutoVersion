@@ -13,3 +13,4 @@ dependencies {
 repositories {
 	mavenCentral()
 }
+apply(from = "../push.gradle")
