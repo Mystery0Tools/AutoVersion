@@ -9,3 +9,5 @@ dependencies {
 repositories {
 	mavenCentral()
 }
+// 在底部加上这句
+apply from: '../push.gradle'
